@@ -8,6 +8,9 @@ import assemblyai as aai
 from pathlib import Path
 from assemblyai import LanguageCode
 
+from gui_select_file import select_file
+
+
 
 class SpeechToText:
     def __init__(self, path_to_file, single_speaker=True):
@@ -51,6 +54,15 @@ class SpeechToText:
         self.save_to_text_file()
 
 
-if __name__ == '__main__':
-    speaker = SpeechToText('/Volumes/big4photo/Downloads/IMG_9407.MOV')
+def gui_select_file():
+    pass
+
+
+def main():
+    path_to_file = select_file()
+    speaker = SpeechToText(path_to_file)
     speaker.speech_to_text()
+
+
+if __name__ == '__main__':
+    main()
