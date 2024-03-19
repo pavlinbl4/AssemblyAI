@@ -1,15 +1,15 @@
 # `pip3 install assemblyai` (macOS)
 # `pip install assemblyai` (Windows)
 # pip install python-dotenv
+import sys
 
 from dotenv import load_dotenv
 import os
 import assemblyai as aai
 from pathlib import Path
 from assemblyai import LanguageCode
-
 from gui_select_file import select_file
-
+import pyperclip
 
 
 class SpeechToText:
@@ -41,6 +41,9 @@ class SpeechToText:
                     text_file.writelines(f'Speaker {sentence.speaker} : {sentence.text}')
                     print(f'Speaker {sentence.speaker} : {sentence.text}')
 
+    def copy_to_clipboard(self):
+        pyperclip.copy(' '.join([sentence.text for sentence in self.transcriber_result]))
+
     def sound_transcriber(self):
         config = self.configuration()
         transcript = aai.Transcriber().transcribe(self.path_to_file, config)
@@ -52,6 +55,7 @@ class SpeechToText:
         else:
             self.transcriber_result = self.sound_transcriber().utterances
         self.save_to_text_file()
+        self.copy_to_clipboard()
 
 
 def gui_select_file():
