@@ -51,8 +51,10 @@ class SpeechToText:
 
     def speech_to_text(self):
         if self.single_speaker:
+        # If single speaker mode is enabled, get transcribed sentences
             self.transcriber_result = self.sound_transcriber().get_sentences()
         else:
+        # If multiple speaker mode, get utterances (which may include speaker identification)
             self.transcriber_result = self.sound_transcriber().utterances
         self.save_to_text_file()
         self.copy_to_clipboard()
