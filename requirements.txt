@@ -1,3 +1,5 @@
-assemblyai~=0.20.2
-pyperclip~=1.8.2
-python-dotenv~=1.0.1
+assemblyai~=0.44.3
+pyperclip~=1.10.0
+python-dotenv~=1.1.1
+PyYAML~=6.0.3
+dotenv~=0.9.9
